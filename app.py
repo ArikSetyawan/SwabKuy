@@ -86,6 +86,11 @@ def maps():
 	json_data = providers.select()
 	return render_template('mapsv2.html',rows=json_data)
 
+@app.route('/providers')
+def provider():
+	data = providers.select()
+	return render_template('providers.html',data=data)
+
 if __name__ == '__main__':
 	create_tables()
 	app.run(debug=True)
