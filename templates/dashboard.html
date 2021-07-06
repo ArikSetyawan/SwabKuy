@@ -10,9 +10,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
   <!-- CSS Libraries -->
-  <!-- <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' /> -->
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
-
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
   <link rel="stylesheet" href="{{url_for('static',filename='css/components.css')}}">
@@ -44,10 +41,10 @@
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
-              <li><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+              <li class="active"><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
               <li class="menu-header">Core</li>
               <li><a class="nav-link" href="/statistics"><i class="fas fa-chart-bar"></i> <span>Statistics</span></a></li>
-              <li class="active"><a class="nav-link" href="/maps"><i class="fas fa-map"></i> <span>Maps</span></a></li>
+              <li><a class="nav-link" href="/maps"><i class="fas fa-map"></i> <span>Maps</span></a></li>
               <li><a class="nav-link" href="/providers"><i class="fas fa-user"></i> <span>Provider</span></a></li>
             </ul>
         </aside>
@@ -57,10 +54,9 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Swab Test Location</h1>
+            <h1>Dashboard</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item">Swab Test Location</div>
             </div>
           </div>
 
@@ -69,12 +65,13 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-body">
-                    <div id="map" data-height="400"></div>
+                    <h1 style="text-align: center;">Welcome to SwabKuy Platform</h1>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         </section>
       </div>
       <footer class="main-footer">
@@ -97,46 +94,6 @@
   <script src="{{url_for('static',filename='js/stisla.js')}}"></script>
 
   <!-- JS Libraies -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYXNldmVnYXIiLCJhIjoiY2tkenB6a2VmMGNkMzJ6cDdubm9sZGo0NCJ9.cJhCkIt7njmkNZUTzGwnzA';
-    var map = new mapboxgl.Map({
-      container: 'map', // container ID
-      style: 'mapbox://styles/mapbox/streets-v11', // style URL
-      center: [114.590111, -3.316694], // starting position [lng, lat]
-      zoom: 4 // starting zoom
-    });
-    // Add geolocate control to the map.
-    map.addControl(
-      new mapboxgl.GeolocateControl({
-        positionOptions: {enableHighAccuracy: true},
-        trackUserLocation: true
-      })
-    );
-    map.on('load', function () {
-      map.resize();
-    });
-    {% for row in rows %}
-    // set marker
-    new mapboxgl.Marker().setLngLat([{{row.lng}},{{row.lat}}]).setPopup(new mapboxgl.Popup().setHTML("<span>{{row.name}}</span>")).addTo(map);
-    {% endfor %}
-  </script>
-  <!-- <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script> -->
-  <!-- <script>
-      //MapBox Token
-      L.mapbox.accessToken = 'pk.eyJ1IjoiYXNldmVnYXIiLCJhIjoiY2tkenB6a2VmMGNkMzJ6cDdubm9sZGo0NCJ9.cJhCkIt7njmkNZUTzGwnzA';
-      
-      //select div and generate map
-      var map = L.mapbox.map('map')
-      .setView([5.980408, 116.073456], 5)
-      .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
-      
-      // start looping data
-      {% for row in rows %}
-      // set marker
-      L.marker([{{row.lat}}, {{row.lng}}]).bindPopup("{{row.name}}").addTo(map);
-      {% endfor %}
-  </script> -->
 
   <!-- Template JS File -->
   <script src="{{url_for('static',filename='js/scripts.js')}}"></script>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Swabkuy</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+  <!-- CSS Libraries -->
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/components.css')}}">
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+          </ul>
+          <div class="search-element">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+          </div>
+        </form>
+      </nav>
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="/">Swabkuy</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="/">SWB</a>
+          </div>
+          <ul class="sidebar-menu">
+              <li class="menu-header">Dashboard</li>
+              <li><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+              <li class="menu-header">Core</li>
+              <li class="active"><a class="nav-link" href="/statistics"><i class="fas fa-chart-bar"></i> <span>Statistics</span></a></li>
+              <li><a class="nav-link" href="/maps"><i class="fas fa-map"></i> <span>Maps</span></a></li>
+              <li><a class="nav-link" href="/providers"><i class="fas fa-user"></i> <span>Provider</span></a></li>
+            </ul>
+        </aside>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Statistics</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item">Statistics</div>
+            </div>
+          </div>
+
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Top 5 Kabupaten dengan provider terbanyak</h4>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="myChart3"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Total Covid-19 Cases in Indonesia</h4>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="myChart4"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-12 col-lg-12 mt-lg-12 mt-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Daily Covid-19 Growth in Indonesia Last 30 Days</h4>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="myChartcases" height="170"></canvas>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+        </section>
+      </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="#">Kupu-Kupu Siang</a>
+        </div>
+        <div class="footer-right">
+          2.3.0
+        </div>
+      </footer>
+    </div>
+  </div>
+
+    <!-- General JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{{url_for('static',filename='js/stisla.js')}}"></script>
+
+  <!-- JS Libraies -->
+  <script src="{{url_for('static',filename='modules/chart.js/Chart.min.js')}}"></script>
+
+  <!-- Template JS File -->
+  <script src="{{url_for('static',filename='js/scripts.js')}}"></script>
+  <script src="{{url_for('static',filename='js/custom.js')}}"></script>
+
+  <!-- Page Specific JS File -->
+  <script type="text/javascript">
+    var ctx = document.getElementById("myChart3").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: {{ count_rs['data'] }},
+          backgroundColor: [
+            '#191d21',
+            '#63ed7a',
+            '#ffa426',
+            '#fc544b',
+            '#6777ef',
+          ],
+          label: 'Dataset 1'
+        }],
+        labels: {{ count_rs['nama_kabupatenkota']|tojson}},
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'bottom',
+        },
+      }
+    });
+    var ctx = document.getElementById("myChart4").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ total_kasus['values'] }},
+          backgroundColor: [
+            '#fc544b',
+            '#3f52e3',
+            '#63ed7a',
+            '#191d21'
+          ],
+          label: 'Dataset 1'
+        }],
+        labels: {{ total_kasus['keys']|tojson }},
+      },
+      options: {
+        responsive: true,
+        legend: {
+          position: 'bottom',
+        },
+      }
+    });
+
+    var ctx = document.getElementById("myChartcases").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: {{ weekly_data['date']|tojson}},
+        datasets: [{
+          label: 'Positif',
+          data: {{weekly_data['jumlah_positif']}},
+          borderWidth: 2,
+          backgroundColor: 'transparent',
+          borderColor: 'rgba(254,86,83,.7)',
+          borderWidth: 2.5,
+          pointBackgroundColor: 'transparent',
+          pointBorderColor: 'transparent',
+          pointRadius: 4
+        },
+        {
+          label: 'Sembuh',
+          data: {{weekly_data['jumlah_sembuh']}},
+          borderWidth: 2,
+          backgroundColor: 'transparent',
+          borderColor: 'rgba(0, 255, 42,.8)',
+          borderWidth: 0,
+          pointBackgroundColor: 'transparent',
+          pointBorderColor: 'transparent',
+          pointRadius: 4
+        },
+        {
+          label: 'Dirawat',
+          data: {{weekly_data['jumlah_dirawat']}},
+          borderWidth: 2,
+          backgroundColor: 'transparent',
+          borderColor: 'rgba(63,82,227,.8)',
+          borderWidth: 0,
+          pointBackgroundColor: 'transparent',
+          pointBorderColor: 'transparent',
+          pointRadius: 4
+        },
+        {
+          label: 'Meninggal',
+          data: {{weekly_data['jumlah_meninggal']}},
+          borderWidth: 2,
+          backgroundColor: 'transparent',
+          borderColor: 'rgba(25, 29, 33, .8)',
+          borderWidth: 0,
+          pointBackgroundColor: 'transparent',
+          pointBorderColor: 'transparent',
+          pointRadius: 4
+        },
+        ]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            gridLines: {
+              drawBorder: false,
+              color: '#f2f2f2',
+            },
+            ticks: {
+              display: false
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false
+            }
+          }]
+        },
+      }
+    });
+  </script>
+</body>
+</html>
