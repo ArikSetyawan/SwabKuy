@@ -10,3 +10,4 @@ keyrings.alt==3.0
 MarkupSafe==1.1.1
 peewee==3.9.4
 Werkzeug==0.15.5
+Requests==2.25.1
